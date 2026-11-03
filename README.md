@@ -1,3 +1,17 @@
+> **📌 这是一个 fork** —— 原项目：[tayalmanan28/MuJoCo-Tutorial](https://github.com/tayalmanan28/MuJoCo-Tutorial)
+>
+> 本仓库**只新增内容，下方的英文原版未作任何改动**。新增的三部分：
+>
+> | 新增内容 | 位置 | 说明 |
+> |---|---|---|
+> | 中文教程 | [`tutorial/zh/`](tutorial/zh/) | 13 个 notebook 的简体中文版；只翻译 markdown 文案，代码 cell 与原版逐字节一致 |
+> | Windows 适配 | [`lab.cmd`](lab.cmd)、[`WINDOWS-NOTES.md`](WINDOWS-NOTES.md) | 绕开 Windows 上 Jupyter 用户目录写入被拒、`MUJOCO_GL` 取值、PowerShell 执行策略等问题 |
+> | 翻译工具链 | [`.translate/`](.translate/) | 译文源文件 `zh_src/` + 构建与校验脚本，改译法后可重新生成中文 notebook |
+>
+> Windows 快速开始：`lab.cmd tutorial\zh\00_what_is_mujoco.ipynb`（kernel 选 `mujoco`）
+
+---
+
 <p align="center">
     <img src="./img/Logo.svg" alt="MuJoCo Tutorial Logo" width="125"/>
 </p>
@@ -11,26 +25,6 @@ A modern tutorial for getting started with <a href="https://mujoco.org/">MuJoCo<
 > MuJoCo is open-source (Apache 2.0) and maintained by Google DeepMind. Since v3.0, it includes GPU-accelerated simulation via MJX.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tayalmanan28/MuJoCo-Tutorial/blob/main/tutorial/quickstart.ipynb)
-
----
-
-## 中文版本 / Chinese version 🇨🇳
-
-这个 fork 在原版之上增加了三部分：
-
-| 内容 | 位置 |
-|------|------|
-| **中文教程** | [`tutorial/zh/`](tutorial/zh/) — 13 个 notebook 的简体中文版；markdown 全部翻译，代码 cell 与原版逐字节一致 |
-| **Windows 适配** | [`WINDOWS-NOTES.md`](WINDOWS-NOTES.md) + [`lab.cmd`](lab.cmd) — 解决 Windows 上 Jupyter 数据目录写入被拒、`MUJOCO_GL` 取值、执行策略等坑 |
-| **翻译工具链** | [`.translate/`](.translate/) — 译文源文件（`zh_src/`）+ 构建/校验脚本，可改译法后重新生成中文 notebook |
-
-启动中文教程（Windows）：
-
-```bat
-lab.cmd tutorial\zh\00_what_is_mujoco.ipynb
-```
-
-英文原版仍在 [`tutorial/`](tutorial/)。翻译规范与术语表见 [`.translate/SPEC.md`](.translate/SPEC.md)。
 
 ---
 
