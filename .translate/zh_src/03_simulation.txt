@@ -1,0 +1,32 @@
+###CELL 0
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tayalmanan28/MuJoCo-Tutorial/blob/main/tutorial/03_simulation.ipynb)
+
+# 教程 3：仿真
+
+理解 `mj_step`、`mj_forward`、仿真步长（timestep）和仿真流水线。
+
+###CELL 3
+## 仿真循环
+
+MuJoCo 的主函数是 `mj_step(model, data)`，它把状态向前推进一个仿真步长：
+
+$$x_{t+h} = f(x_t, u_t)$$
+
+其中 $x = (q, \dot{q})$ 是状态，$u$ 是控制输入。
+
+###CELL 5
+## `mj_step` 与 `mj_forward` 对比
+
+- **`mj_step`**：推进时间。计算力 → 积分 → 更新状态。
+- **`mj_forward`**：计算所有派生量，但**不**推进时间。
+
+当你在手动设置 `qpos`/`qvel` 之后需要位置/速度时，使用 `mj_forward`。
+
+###CELL 7
+## 仿真步长与稳定性
+
+更小的仿真步长 = 更精确但更慢。MuJoCo 的默认值为 2ms。
+我们来比较一下：
+
+###CELL 9
+## 能量与动量跟踪

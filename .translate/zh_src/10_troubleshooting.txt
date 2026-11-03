@@ -1,0 +1,130 @@
+###CELL 0
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tayalmanan28/MuJoCo-Tutorial/blob/main/tutorial/10_troubleshooting.ipynb)
+
+# 教程 10：故障排查与常见错误
+
+一份生存指南，应对每个 MuJoCo 新手都会撞上的那些错误。
+
+###CELL 3
+---
+## 问题 1：渲染时黑屏
+
+**症状：** 你渲染出一张图，但它全是黑的（或局部是黑的）。
+
+**原因：** 你在手动设置 `qpos` 之后没有调用 `mj_forward()`，所以派生量（比如几何体（geom）的笛卡尔坐标）还没有被计算出来。
+
+###CELL 5
+**修复：** 在手动设置 `data.qpos` 或 `data.qvel` 之后，务必调用 `mujoco.mj_forward(model, data)`。如果你在循环里调用 `mj_step()`，这一步会自动完成。
+
+###CELL 6
+---
+## 问题 2：仿真“爆炸”（NaN 或巨大数值）
+
+**症状：** 位置变成 `inf` 或 `nan`，物体飞到无穷远。
+
+**常见原因：**
+1. 对这个模型来说仿真步长（timestep）太大
+2. 控制力极大
+3. 初始化时几何体相互穿透
+
+###CELL 9
+---
+## 问题 3：物体互相穿透
+
+**症状：** 本该碰撞的刚体（body）没有碰撞。
+
+**常见原因：**
+1. `contype`/`conaffinity` 不匹配（碰撞过滤）
+2. 同一个刚体（body）内的几何体默认不会互相碰撞
+3. 物体初始位置就严重穿透
+
+###CELL 11
+---
+## 问题 4：机器人不动（控制没有效果）
+
+**症状：** 你设置了 `data.ctrl`，但什么也没发生。
+
+**常见原因：**
+1. 忘了在 XML 里添加 `<actuator>`
+2. 控制范围太小
+3. 关节（joint）阻尼太大，把运动全吞掉了
+4. 在控制循环之外设置 ctrl（只设置了一次）
+
+###CELL 13
+---
+## 问题 5：模型加载不了（XML 错误）
+
+**常见 XML 错误：**
+
+###CELL 15
+**XML 调试技巧：**
+1. 从一个能跑通的最小模型开始，一次只添加一样东西
+2. MuJoCo 的报错信息会告诉你是第几行——读它们！
+3. 使用 XML 校验器，或带 XML 高亮的 IDE
+4. 常见笔误：`fromto` 需要 6 个数字（x1 y1 z1 x2 y2 z2）
+
+###CELL 16
+---
+## 问题 6：本地渲染正常，服务器/Colab 上不行
+
+**症状：** `mujoco.viewer.launch()` 失败，报显示相关的错误。
+
+**原因：** 交互式查看器（viewer）需要一个显示屏（GUI）。服务器/Colab 上没有。
+
+**修复：** 改用 `mujoco.Renderer`（离屏渲染）：
+
+###CELL 18
+---
+## 问题 7：性能太慢
+
+**提速技巧：**
+
+###CELL 20
+---
+## 快速参考：常用操作
+
+```python
+# ─── Setup ───
+model = mujoco.MjModel.from_xml_string(xml)   # or from_xml_path("file.xml")
+data = mujoco.MjData(model)
+
+# ─── Reset ───
+mujoco.mj_resetData(model, data)               # reset to initial state
+data.qpos[0] = 1.5                             # then set custom state
+mujoco.mj_forward(model, data)                 # propagate (IMPORTANT!)
+
+# ─── Simulate ───
+data.ctrl[0] = 1.0                             # set control
+mujoco.mj_step(model, data)                    # advance one timestep
+
+# ─── Read state ───
+pos = data.qpos[:]                             # all positions
+vel = data.qvel[:]                             # all velocities
+t = data.time                                  # current sim time
+
+# ─── Named access ───
+model.joint('shoulder').id                     # joint ID by name
+data.body('robot').xpos                        # body position in world
+data.site('end_effector').xpos                 # site position
+
+# ─── Render ───
+renderer = mujoco.Renderer(model, height=480, width=640)
+mujoco.mj_forward(model, data)                 # needed before first render
+renderer.update_scene(data)
+pixels = renderer.render()                     # numpy array (H, W, 3)
+renderer.close()                               # free resources
+
+# ─── Contacts ───
+n = data.ncon                                  # number of active contacts
+force = np.zeros(6)
+mujoco.mj_contactForce(model, data, 0, force)  # force at contact 0
+```
+
+###CELL 21
+---
+## 还是卡住了？
+
+1. **官方文档：** [mujoco.readthedocs.io](https://mujoco.readthedocs.io/)
+2. **GitHub issues：** [github.com/google-deepmind/mujoco/issues](https://github.com/google-deepmind/mujoco/issues)
+3. **XML 参考：** [mujoco.readthedocs.io/en/stable/XMLreference.html](https://mujoco.readthedocs.io/en/stable/XMLreference.html)
+4. **Python 绑定：** [mujoco.readthedocs.io/en/stable/python.html](https://mujoco.readthedocs.io/en/stable/python.html)

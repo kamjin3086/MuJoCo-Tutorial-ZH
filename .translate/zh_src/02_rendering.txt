@@ -1,0 +1,29 @@
+###CELL 0
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tayalmanan28/MuJoCo-Tutorial/blob/main/tutorial/02_rendering.ipynb)
+
+# 教程 2：渲染
+
+学习如何渲染场景、配置相机和制作视频。
+
+###CELL 3
+## 用 `mujoco.Renderer` 进行基础渲染
+
+`Renderer` 类负责离屏渲染（offscreen rendering）— 非常适合 notebook 和无头模式（headless）服务器。
+
+###CELL 5
+## 相机配置
+
+你可以通过配置相机来控制视点。
+
+###CELL 8
+## XML 中的固定相机
+
+你也可以直接在模型中定义相机：
+
+###CELL 10
+## 制作视频
+
+在仿真过程中渲染帧，再合成为一段视频：
+
+###CELL 12
+## 深度渲染与分割渲染

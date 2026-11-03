@@ -1,0 +1,62 @@
+###CELL 0
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tayalmanan28/MuJoCo-Tutorial/blob/main/tutorial/06_xml_modeling.ipynb)
+
+# 教程 6：MJCF 建模指南
+
+用 MuJoCo 的 XML 格式构建自定义机器人和环境。
+
+###CELL 3
+## 刚体-关节-几何体层次结构
+
+MJCF 是树状结构：
+```
+mujoco
+└── worldbody
+    └── body (has joints & geoms)
+        └── body (child body)
+            └── ...
+```
+
+- **刚体（body）** 定义运动学树中的坐标系
+- **关节（joint）** 连接刚体（增加自由度）
+- **几何体（geom）** 定义碰撞/视觉形状
+
+###CELL 5
+## 使用默认值
+
+`<default>` 元素允许你一次性设置常用属性。
+你也可以为不同的分组使用**默认类（default classes）**：
+
+###CELL 7
+## 复合对象
+
+MuJoCo 可以自动生成软体、绳索和网格：
+
+###CELL 9
+## 加载外部模型
+
+使用 `<include>` 组合模型，或从 [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie) 加载：
+
+###CELL 11
+## 肌腱（tendon）
+
+肌腱是连接关节或空间点的长度约束。
+它们可以实现**关节耦合**、**滑轮**和**肌肉走线**。
+
+类型：
+- `<fixed>` — 关节位置的加权和（耦合）
+- `<spatial>` — 经由途经点和缠绕表面走线
+
+###CELL 13
+## 等式约束
+
+等式约束强制实现几何关系：
+
+| 类型 | 效果 |
+|------|--------|
+| `<connect>` | 两个刚体共享一个点（没有刚体的球关节） |
+| `<weld>` | 两个刚体刚性连接 |
+| `<joint>` | 一个关节跟随另一个关节（齿轮比） |
+| `<tendon>` | 肌腱长度保持固定 |
+
+这些是软约束（以阻抗方式求解），由 `solref` 和 `solimp` 控制。

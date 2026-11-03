@@ -1,0 +1,27 @@
+###CELL 0
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tayalmanan28/MuJoCo-Tutorial/blob/main/tutorial/09_sensors_and_estimation.ipynb)
+
+# 教程 9：传感器与状态估计
+
+使用 MuJoCo 的内置传感器：IMU、力/力矩、关节编码器、相机。
+
+###CELL 3
+## 传感器类型
+
+MuJoCo 支持多种传感器类型：
+- `jointpos`、`jointvel`——编码器读数
+- `accelerometer`、`gyro`——IMU
+- `force`、`torque`——力/力矩传感器
+- `framepos`、`framequat`——刚体（body）位姿
+- `touch`——接触法向力
+
+###CELL 5
+## 读取传感器数据
+
+所有传感器值都在 `data.sensordata`（扁平数组）中。
+用 `sensor_adr` 和 `sensor_dim` 做索引，或者使用具名访问：
+
+###CELL 8
+## 添加传感器噪声
+
+MuJoCo 原生支持通过 `noise` 属性给传感器加噪声：

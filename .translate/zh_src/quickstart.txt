@@ -1,0 +1,23 @@
+###CELL 0
+# MuJoCo 快速上手 🤖
+
+本 notebook 让你在 Google Colab 中零配置即可运行 MuJoCo 仿真。
+
+###CELL 3
+## 1. 用 MJCF（XML）定义模型
+
+###CELL 5
+## 2. 仿真与渲染
+
+###CELL 7
+## 3. 添加控制器
+
+我们用 PD 控制器来控制一个单摆。
+
+###CELL 9
+## 下一步
+
+- [MJCF 参考](https://mujoco.readthedocs.io/en/stable/XMLreference.html) — 构建你自己的模型
+- [Gymnasium MuJoCo 环境](https://gymnasium.farama.org/environments/mujoco/) — 可直接用于 RL 的环境
+- [MJX](https://mujoco.readthedocs.io/en/stable/mjx.html) — 基于 JAX 的 GPU 并行仿真
+- [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie) — 机器人模型动物园

@@ -1,0 +1,36 @@
+###CELL 0
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tayalmanan28/MuJoCo-Tutorial/blob/main/tutorial/interactive_control.ipynb)
+
+# 交互式控制游乐场
+
+用滑块实时调节 PD 增益，观察它们如何影响单摆的行为。
+
+**要求：** `ipywidgets`（Colab 和 JupyterLab 自带）
+
+###CELL 4
+## 用给定的增益进行仿真
+
+这个函数运行一次仿真并返回时间序列数据：
+
+###CELL 6
+## 交互式滑块组件
+
+拖动滑块改变 `kp`、`kd` 和目标角度。图表会实时刷新！
+
+###CELL 8
+## 渲染视频
+
+一旦找到满意的增益，就用这些设置渲染一段视频：
+
+###CELL 10
+## 练习
+
+1. **找出临界阻尼增益**——在快速到达目标的同时把超调降到最低
+2. **Kd=0 时会发生什么？**——纯比例控制
+3. **Kp 非常高时会发生什么？**——注意力矩会在 ±10 Nm 处饱和
+4. **试试负的 Kd**——会出什么问题？（提示：正反馈）
+
+**关键洞察：** 比值 $\zeta = \frac{K_d}{2\sqrt{K_p}}$ 决定阻尼：
+- $\zeta < 1$：欠阻尼（会振荡）
+- $\zeta = 1$：临界阻尼（最快且无超调）
+- $\zeta > 1$：过阻尼（缓慢逼近）

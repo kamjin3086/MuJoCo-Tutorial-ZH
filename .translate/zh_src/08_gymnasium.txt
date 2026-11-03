@@ -1,0 +1,30 @@
+###CELL 0
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tayalmanan28/MuJoCo-Tutorial/blob/main/tutorial/08_gymnasium.ipynb)
+
+# 教程 8：MuJoCo + Gymnasium（强化学习环境）
+
+使用 MuJoCo 环境配合 Gymnasium 进行强化学习。
+
+###CELL 3
+## 内置 MuJoCo 环境
+
+Gymnasium 自带经典的 MuJoCo 控制任务：
+
+###CELL 6
+## 运行一个回合（episode）
+
+###CELL 8
+## 比较各个环境
+
+###CELL 10
+## 创建自定义的 MuJoCo Gymnasium 环境
+
+创建 `gymnasium.Env` 的子类，内部使用 MuJoCo：
+
+###CELL 12
+## 后续步骤
+
+- 用 [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) 训练一个 RL 智能体
+- 使用 [MJX](./07_mjx.ipynb) 进行 GPU 并行训练
+- 构建包含多个刚体（body）/传感器的复杂环境
+- 添加奖励塑形和课程学习

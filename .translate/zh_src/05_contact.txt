@@ -1,0 +1,25 @@
+###CELL 0
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tayalmanan28/MuJoCo-Tutorial/blob/main/tutorial/05_contact.ipynb)
+
+# 教程 5：接触与碰撞
+
+理解 MuJoCo 如何处理接触、读取接触力，并配置接触参数。
+
+###CELL 3
+## 接触检测
+
+MuJoCo 会自动检测所有几何体（geom）配对之间的接触。
+活动接触保存在 `data.contact[:data.ncon]` 中。
+
+###CELL 5
+## 接触参数
+
+用 `solref`（刚度/阻尼）和 `friction` 控制接触行为：
+
+###CELL 7
+## 碰撞过滤
+
+用 `contype` 和 `conaffinity` 控制哪些几何体会发生碰撞：
+
+###CELL 9
+红色球体与地面碰撞；蓝色球体直接穿过它（不同的碰撞组）。
