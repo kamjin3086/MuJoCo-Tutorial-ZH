@@ -5,8 +5,9 @@ import sys
 import os
 from pathlib import Path
 
-# Force offscreen rendering
-os.environ["MUJOCO_GL"] = "egl"
+# Force offscreen rendering. On Windows MuJoCo only accepts "glfw";
+# "egl"/"osmesa" raise RuntimeError at import there.
+os.environ.setdefault("MUJOCO_GL", "glfw" if sys.platform == "win32" else "egl")
 
 EXAMPLES_DIR = Path(__file__).parent.parent / "examples"
 

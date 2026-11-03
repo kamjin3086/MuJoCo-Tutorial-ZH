@@ -1,1 +1,10 @@
 __pycache__/
+.venv/
+*.mp4
+.jupyter/
+.ipython/
+.mplcache/
+.acl-recovery/
+.translate/en/
+.translate/_*.txt
+.ipynb_checkpoints/
