@@ -5,12 +5,12 @@
 
 学习基础知识：加载模型、`MjModel`、`MjData` 与命名访问。
 
-**前置要求：** [教程 00：什么是 MuJoCo？](00_what_is_mujoco.ipynb) — 你应该已经理解：
+**前置要求：** [教程 00：什么是 MuJoCo？](00_what_is_mujoco.ipynb)——你应该已经理解：
 - “描述 → 仿真 → 观察”模式
 - `MjModel` = 蓝图（恒定不变），`MjData` = 状态（会变化）
 - `qpos`/`qvel` = 所有关节（joint）的位置/速度
 
-本教程将更深入地讲解如何**检查**模型以及如何按名称访问数据。
+本教程将更深入地讲解如何**检查**模型、如何按名称访问数据。
 
 ###CELL 3
 ## 加载模型
@@ -19,9 +19,9 @@ MuJoCo 模型用 [MJCF](https://mujoco.readthedocs.io/en/stable/XMLreference.htm
 最小的合法模型就是 `<mujoco/>`。我们来定义一个简单的场景：
 
 ###CELL 5
-## MjModel — 静态描述
+## MjModel——静态描述
 
-`MjModel` 包含了仿真过程中**不会改变**的一切：
+`MjModel` 包含仿真过程中**不会改变**的一切：
 几何尺寸、质量、关节类型、颜色等。
 
 ###CELL 7
@@ -30,9 +30,9 @@ MuJoCo 模型用 [MJCF](https://mujoco.readthedocs.io/en/stable/XMLreference.htm
 Python 绑定提供了便捷的命名访问器：
 
 ###CELL 9
-## MjData — 动态状态
+## MjData——动态状态
 
-`MjData` 包含仿真的**状态**（时间、位置、速度）
+`MjData` 包含仿真**状态**（时间、位置、速度）
 以及派生量（笛卡尔位置、力等）。
 
 ###CELL 11
@@ -40,5 +40,5 @@ Python 绑定提供了便捷的命名访问器：
 
 - `MjModel` = 静态描述（由 XML 编译而来）
 - `MjData` = 动态状态 + 派生量
-- 读取派生量之前，先用 `mj_forward()` 或 `mj_kinematics()` 传播状态
+- 读取派生量之前，先用 `mj_forward()` 或 `mj_kinematics()` 把状态算出来
 - 命名访问：`model.geom('name')`、`data.body('name')` 等

@@ -6,5 +6,6 @@ __pycache__/
 .mplcache/
 .acl-recovery/
 .translate/en/
+.translate/review/
 .translate/_*.txt
 .ipynb_checkpoints/

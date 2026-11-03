@@ -3,7 +3,7 @@
 
 # 教程 8：MuJoCo + Gymnasium（强化学习环境）
 
-使用 MuJoCo 环境配合 Gymnasium 进行强化学习。
+使用 MuJoCo 环境配合 Gymnasium 做强化学习。
 
 ###CELL 3
 ## 内置 MuJoCo 环境
@@ -25,6 +25,6 @@ Gymnasium 自带经典的 MuJoCo 控制任务：
 ## 后续步骤
 
 - 用 [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) 训练一个 RL 智能体
-- 使用 [MJX](./07_mjx.ipynb) 进行 GPU 并行训练
+- 用 [MJX](./07_mjx.ipynb) 做 GPU 并行训练
 - 构建包含多个刚体（body）/传感器的复杂环境
 - 添加奖励塑形和课程学习

@@ -19,7 +19,7 @@ MuJoCo 支持多种传感器类型：
 ## 读取传感器数据
 
 所有传感器值都在 `data.sensordata`（扁平数组）中。
-用 `sensor_adr` 和 `sensor_dim` 做索引，或者使用具名访问：
+用 `sensor_adr` 和 `sensor_dim` 做索引，或者按名称访问：
 
 ###CELL 8
 ## 添加传感器噪声

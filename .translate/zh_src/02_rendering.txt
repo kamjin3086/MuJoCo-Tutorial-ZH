@@ -6,14 +6,14 @@
 学习如何渲染场景、配置相机和制作视频。
 
 ###CELL 3
-## 用 `mujoco.Renderer` 进行基础渲染
+## 基于 `mujoco.Renderer` 的基础渲染
 
-`Renderer` 类负责离屏渲染（offscreen rendering）— 非常适合 notebook 和无头模式（headless）服务器。
+`Renderer` 类负责离屏渲染（offscreen rendering）——非常适合 notebook 和无头模式（headless）下的服务器。
 
 ###CELL 5
 ## 相机配置
 
-你可以通过配置相机来控制视点。
+通过配置相机，你可以控制视点。
 
 ###CELL 8
 ## XML 中的固定相机

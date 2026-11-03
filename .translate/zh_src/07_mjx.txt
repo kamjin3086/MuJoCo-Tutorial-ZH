@@ -3,9 +3,9 @@
 
 ⚡ **本 notebook 需要 GPU 运行时。** 在 Colab 中：Runtime → Change runtime type → T4 GPU
 
-# 教程 7：MJX — GPU 加速仿真
+# 教程 7：MJX——GPU 加速仿真
 
-MJX 是 MuJoCo 的 JAX 后端，可在 GPU 上进行大规模并行仿真。
+MJX 是 MuJoCo 的 JAX 后端，可在 GPU 上实现大规模并行仿真。
 非常适合需要数千个环境的强化学习场景。
 
 ###CELL 3
@@ -36,12 +36,12 @@ MJX 在 GPU 上运行，但渲染用的是 CPU 上的 MuJoCo。把数据传回�
 | 使用场景 | 建议 |
 |----------|---------------|
 | 单个环境、交互式 | CPU MuJoCo + `mujoco.viewer` |
-| RL 训练（PPO、SAC） | MJX — 批量仿真上千个环境 |
-| 系统辨识 | MJX — 可微物理 |
-| 轨迹优化 | MJX — 沿动力学做自动微分 |
-| 接触丰富的复杂任务 | CPU MuJoCo（MJX 存在一些接触方面的限制） |
+| RL 训练（PPO、SAC） | MJX——批量仿真上千个环境 |
+| 系统辨识 | MJX——可微物理 |
+| 轨迹优化 | MJX——沿动力学做自动微分 |
+| 接触丰富的复杂任务 | CPU MuJoCo（MJX 在接触方面有一些限制） |
 
 ### 主要区别
-- MJX 支持大多数而非全部 MuJoCo 特性（参见[文档](https://mujoco.readthedocs.io/en/stable/mjx.html#feature-parity)）
-- MJX 是**可微分的** — 你可以沿物理仿真计算梯度
-- 理想批量大小：1024–8192，可获得最佳 GPU 利用率
+- MJX 支持大部分 MuJoCo 特性，但并非全部（参见[文档](https://mujoco.readthedocs.io/en/stable/mjx.html#feature-parity)）
+- MJX 是**可微分的**——你可以沿物理仿真计算梯度
+- 批量大小取 1024–8192 时，GPU 利用率最佳
