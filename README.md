@@ -14,6 +14,26 @@ A modern tutorial for getting started with <a href="https://mujoco.org/">MuJoCo<
 
 ---
 
+## 中文版本 / Chinese version 🇨🇳
+
+这个 fork 在原版之上增加了三部分：
+
+| 内容 | 位置 |
+|------|------|
+| **中文教程** | [`tutorial/zh/`](tutorial/zh/) — 13 个 notebook 的简体中文版；markdown 全部翻译，代码 cell 与原版逐字节一致 |
+| **Windows 适配** | [`WINDOWS-NOTES.md`](WINDOWS-NOTES.md) + [`lab.cmd`](lab.cmd) — 解决 Windows 上 Jupyter 数据目录写入被拒、`MUJOCO_GL` 取值、执行策略等坑 |
+| **翻译工具链** | [`.translate/`](.translate/) — 译文源文件（`zh_src/`）+ 构建/校验脚本，可改译法后重新生成中文 notebook |
+
+启动中文教程（Windows）：
+
+```bat
+lab.cmd tutorial\zh\00_what_is_mujoco.ipynb
+```
+
+英文原版仍在 [`tutorial/`](tutorial/)。翻译规范与术语表见 [`.translate/SPEC.md`](.translate/SPEC.md)。
+
+---
+
 ## Installation 🚀
 
 MuJoCo is a pure Python package — no license keys, no system dependencies:
