@@ -9,3 +9,4 @@ __pycache__/
 .translate/review/
 .translate/_*.txt
 .ipynb_checkpoints/
+MUJOCO_LOG.TXT

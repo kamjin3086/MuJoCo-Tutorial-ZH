@@ -1,12 +1,13 @@
 > **📌 这是一个 fork** —— 原项目：[tayalmanan28/MuJoCo-Tutorial](https://github.com/tayalmanan28/MuJoCo-Tutorial)
 >
-> 本仓库**只新增内容，下方的英文原版未作任何改动**。新增的三部分：
+> 本仓库**只新增内容，下方的英文原版未作任何改动**。新增的四部分：
 >
 > | 新增内容 | 位置 | 说明 |
 > |---|---|---|
 > | 中文教程 | [`tutorial/zh/`](tutorial/zh/) | 13 个 notebook 的简体中文版；只翻译 markdown 文案，代码 cell 与原版逐字节一致 |
 > | Windows 适配 | [`lab.cmd`](lab.cmd)、[`WINDOWS-NOTES.md`](WINDOWS-NOTES.md) | 绕开 Windows 上 Jupyter 用户目录写入被拒、`MUJOCO_GL` 取值、PowerShell 执行策略等问题 |
 > | 翻译工具链 | [`.translate/`](.translate/) | 译文源文件 `zh_src/` + 构建与校验脚本，改译法后可重新生成中文 notebook |
+> | 实机仿真准备清单 | [`SIM-READINESS.md`](SIM-READINESS.md) | 从 3D 打印件 + 舵机布置图到可信 MJCF 模型：准备清单、单位约定、验证阶梯、验收模板 |
 >
 > Windows 快速开始：`lab.cmd tutorial\zh\00_what_is_mujoco.ipynb`（kernel 选 `mujoco`）
 
