@@ -10,3 +10,5 @@ __pycache__/
 .translate/_*.txt
 .ipynb_checkpoints/
 MUJOCO_LOG.TXT
+
+.glb-test/
